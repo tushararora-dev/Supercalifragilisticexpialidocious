@@ -16,7 +16,7 @@ def display_content():
     }
     p, li { 
         font-size: 18px !important;
-        line-height: 1.6 !important;
+        # line-height: 1.6 !important;
         text-align: justify !important;
         color: oldlace;
     }
