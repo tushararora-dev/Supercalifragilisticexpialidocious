@@ -252,39 +252,39 @@ def main():
 
 
     # Add a bottom anchor so #bottom works (place after dynamic content)
-    st.markdown('<div id="bottom"></div>', unsafe_allow_html=True)
+    # st.markdown('<div id="bottom"></div>', unsafe_allow_html=True)
 
     # -----------------------
     # Bottom nav buttons (Previous/Next chapter)
     # -----------------------
-    st.markdown("""
-    <style>
-    a.nav-btn {
-      display: inline-block;
-      background: #0D0B1A;
-      color: #e7b66c;
-      border: 2px solid #e7b66c;
-      padding: 0.5rem 0.9rem;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-    }
-    a.nav-btn:hover {
-      background: #e7b66c;
-      color: #0D0B1A;
-    }
-    </style>
-    """, unsafe_allow_html=True)
+    # st.markdown("""
+    # <style>
+    # a.nav-btn {
+    #   display: inline-block;
+    #   background: #0D0B1A;
+    #   color: #e7b66c;
+    #   border: 2px solid #e7b66c;
+    #   padding: 0.5rem 0.9rem;
+    #   border-radius: 8px;
+    #   text-decoration: none;
+    #   font-weight: 600;
+    # }
+    # a.nav-btn:hover {
+    #   background: #e7b66c;
+    #   color: #0D0B1A;
+    # }
+    # </style>
+    # """, unsafe_allow_html=True)
 
-    col_left, col_right = st.columns(2)
-    with col_left:
-        if st.session_state.selected_chapter > 1:
-            st.markdown('<a class="nav-btn" href="?nav=prev">← Previous Chapter</a>', unsafe_allow_html=True)
-    with col_right:
-        if st.session_state.selected_chapter < 11:
-            st.markdown('<div style="text-align:right;">'
-                        '<a class="nav-btn" href="?nav=next">Next Chapter →</a>'
-                        '</div>', unsafe_allow_html=True)
+    # col_left, col_right = st.columns(2)
+    # with col_left:
+    #     if st.session_state.selected_chapter > 1:
+    #         st.markdown('<a class="nav-btn" href="?nav=prev">← Previous Chapter</a>', unsafe_allow_html=True)
+    # with col_right:
+    #     if st.session_state.selected_chapter < 11:
+    #         st.markdown('<div style="text-align:right;">'
+    #                     '<a class="nav-btn" href="?nav=next">Next Chapter →</a>'
+    #                     '</div>', unsafe_allow_html=True)
 
     # -----------------------
     # Sticky scroll-to-top / scroll-to-bottom buttons using anchors

@@ -28,9 +28,9 @@ def display_content():
 
     td {
         border: 1px solid #444;
-        padding: 12px;
-        font-size: 18px !important;
-        line-height: 1.6 !important;
+        padding: 5px;
+        font-size: 16px !important;
+        line-height: 1.2 !important;
         text-align: justify !important;
         color: oldlace;
         background-color: #6969691f; /* dark background to contrast oldlace */
