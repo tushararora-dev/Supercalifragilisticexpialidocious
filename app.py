@@ -3,8 +3,9 @@ import streamlit as st
 import importlib.util
 import os
 from pathlib import Path
-
-
+import base64
+# Clear all cached data
+st.cache_data.clear()
 
 
 def create_image_text_layout(image_path=None, text_content=None, layout="full", image_position="left"):
@@ -90,21 +91,26 @@ def main():
     # -----------------------
     # Sidebar styling + nav
     # -----------------------
+    # Load PNG and convert to base64
+    with open("skull.png", "rb") as f:
+        img_bytes = f.read()
+    b64_cursor = base64.b64encode(img_bytes).decode()
 
-    # Inject CSS to change sidebar width
-    st.markdown("""
-        <style>
-        /* Default for desktop */
-        section[data-testid="stSidebar"] {
-            width: 350px !important;
-        }
-        section[data-testid="stSidebar"] > div {
-            width: 350px !important;
-        }
-        </style>
+    # Inject CSS
+    # Inject CSS
+    st.markdown(f"""
+    <style>
+    /* Apply custom cursor everywhere */
+    *, body, html {{
+        cursor: url("data:image/png;base64,{b64_cursor}") 16 16, auto !important;
+    }}
+
+    /* Force it even on interactive elements */
+    button, a, div, span, input, textarea, [role="button"] {{
+        cursor: url("data:image/png;base64,{b64_cursor}") 16 16, auto !important;
+    }}
+    </style>
     """, unsafe_allow_html=True)
-
-
 
 
     st.sidebar.markdown("""
@@ -152,6 +158,7 @@ def main():
             st.session_state.selected_chapter = i
             st.rerun()
 
+
     # -----------------------
     # Title + fonts
     # -----------------------
@@ -162,7 +169,7 @@ def main():
 
         .stApp h1 {
             font-family: 'New Rocker', cursive !important;
-            font-size: 90px !important;
+            font-size: 100px !important;
             color: #dca65b !important;
             text-align: center !important;
             letter-spacing: 2px !important;
@@ -176,7 +183,7 @@ def main():
         .beth {
             font-family: 'Beth Ellen', cursive !important;
             font-size: 20px;
-            text-align: right;
+            text-align: center;
             color: oldlace !important;
             margin-top: 0.2em;
         }
@@ -222,7 +229,6 @@ def main():
     # -----------------------
     chapter_module = load_chapter_content(st.session_state.selected_chapter)
     display_chapter_content(chapter_module, st.session_state.selected_chapter)
-    st.image("attached_assets/generated_images/main.png")
 
     # -----------------------
     # Review Form
