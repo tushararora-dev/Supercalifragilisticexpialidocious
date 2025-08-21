@@ -199,7 +199,7 @@ def main():
         /* -------- Responsive font sizes -------- */
         @media (max-width: 768px) {   /* tablets & small devices */
             .stApp h1 {
-                font-size: 70px !important;
+                font-size: 60px !important;
             }
             p {
                 font-size: 16px !important;
@@ -211,7 +211,7 @@ def main():
 
         @media (max-width: 480px) {   /* mobile phones */
             .stApp h1 {
-                font-size: 70px !important;
+                font-size: 60px !important;
             }
             p {
                 font-size: 14px !important;
