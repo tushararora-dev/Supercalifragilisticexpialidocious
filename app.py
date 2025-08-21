@@ -209,7 +209,7 @@ def main():
 
         @media (max-width: 480px) {   /* mobile phones */
             .stApp h1 {
-                font-size: 50px !important;
+                font-size: 60px !important;
             }
 
             .beth {
