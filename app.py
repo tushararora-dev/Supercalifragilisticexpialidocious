@@ -66,7 +66,7 @@ def display_chapter_content(chapter_module, chapter_num):
 
 def main():
     # Page configuration
-    st.set_page_config(page_title="Supercalifragilisticexpialidocious", layout="wide")
+    st.set_page_config(page_title="Supercalifragilisticexpialidocious", page_icon="💀", layout="wide")
 
     # Put a top anchor so #top works
     st.markdown('<div id="top"></div>', unsafe_allow_html=True)
@@ -118,6 +118,7 @@ def main():
     [data-testid="stSidebar"] .stButton > button {
         justify-content: flex-start !important;
         text-align: left !important;
+                        
     }
     [data-testid="stSidebar"] .stButton > button > div {
         width: 100%;
@@ -127,6 +128,8 @@ def main():
         background: #0D0B1A !important;
         color: #e7b66c !important;
         border: 2px solid #e7b66c !important;
+                    
+        
     }
     </style>
     """, unsafe_allow_html=True)
@@ -196,7 +199,7 @@ def main():
         /* -------- Responsive font sizes -------- */
         @media (max-width: 768px) {   /* tablets & small devices */
             .stApp h1 {
-                font-size: 60px !important;
+                font-size: 80px !important;
             }
             p {
                 font-size: 16px !important;
@@ -208,7 +211,7 @@ def main():
 
         @media (max-width: 480px) {   /* mobile phones */
             .stApp h1 {
-                font-size: 60px !important;
+                font-size: 80px !important;
             }
             p {
                 font-size: 14px !important;
