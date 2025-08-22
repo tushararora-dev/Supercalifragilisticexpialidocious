@@ -8,6 +8,11 @@ import base64
 st.cache_data.clear()
 
 
+# Read GIF and encode to base64
+with open("ss.png", "rb") as f:
+    gif_bytes = f.read()
+b64_gif = base64.b64encode(gif_bytes).decode()
+
 def create_image_text_layout(image_path=None, text_content=None, layout="full", image_position="left"):
     """Reusable layout for image + text blocks"""
     if layout == "full":
@@ -278,6 +283,19 @@ def main():
     # -----------------------
     # Review Form
     # -----------------------
+
+    st.markdown("""
+    <style>
+    .review-form {
+        border: 2px solid #1E90FF; /* Blue border */
+        border-radius: 10px;
+        padding: 20px;
+        background-color: #f9f9f9; /* Light background */
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+
     st.markdown("## Leave a Review")
     with st.form("review_form"):
         name = st.text_input("Your Name")
@@ -356,7 +374,28 @@ def main():
     <div id="bottom"></div>
     """, unsafe_allow_html=True)
 
+    # Sticky GIF at top-right, hidden on mobile
+    st.markdown(f"""
+    <style>
+    .top-right-gif {{
+        position: fixed;
+        top: 70px;
+        right: -3px;
+        z-index: 1000;
+        border: 2px solid #dca65b ;
+        border-radius: 2px;
+    }}
 
+    @media (max-width: 768px) {{
+        .top-right-gif {{
+            display: none !important;
+        }}
+    }}
+    </style>
+    <div class="top-right-gif">
+        <img src="data:image/gif;base64,{b64_gif}" width="200">
+    </div>
+    """, unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
