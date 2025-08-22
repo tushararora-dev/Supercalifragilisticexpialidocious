@@ -134,6 +134,29 @@ def main():
     </style>
     """, unsafe_allow_html=True)
 
+
+    st.markdown(
+    """
+    <style>
+    /* Set sidebar width */
+    [data-testid="stSidebar"] {
+        width: 400px !important;  /* Change this to your desired width */
+    }
+
+    /* Optional: adjust main content margin when sidebar width changes */
+    [data-testid="stMainContent"] {
+        margin-left: 400px !important;  /* slightly larger than sidebar width */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+    )
+
+
+
+
+
+
     st.sidebar.image("sidebar2.gif", use_container_width=True)
 
     chapter_names = {
@@ -229,13 +252,6 @@ def main():
     chapter_module = load_chapter_content(st.session_state.selected_chapter)
     display_chapter_content(chapter_module, st.session_state.selected_chapter)
 
-    # st.markdown("""
-    # <style>
-    # div[data-testid="stButton"] > button {
-    #     white-space: nowrap !important;
-    # }
-    # </style>
-    # """, unsafe_allow_html=True)
 
     col1, col2 = st.columns([1, 1])
 
@@ -275,55 +291,6 @@ def main():
                 from google_sheets import add_review
                 add_review(name, review, st.session_state.selected_chapter)
                 st.success("✅ Thank you! Your review has been saved.")
-
-
-    # -----------------------
-    # Navigation Buttons (Prev / Next)
-    # -----------------------
-    # -----------------------
-    # Scoped CSS only for prev/next buttons
-    # -----------------------
-    # st.markdown("""
-    # <style>
-    # /* Previous Chapter button */
-    # .stButton > button:has(span:contains("Previous Chapter")) {
-    #     white-space: nowrap !important;
-    #     background-color: #0D0B1A !important;
-    #     color: #e7b66c !important;
-    #     border: 2px solid #e7b66c !important;
-    #     border-radius: 8px !important;
-    #     padding: 10px 20px !important;
-    #     font-size: 16px !important;
-    # }
-    # .stButton > button:has(span:contains("Previous Chapter")):hover {
-    #     background-color: #e7b66c !important;
-    #     color: #0D0B1A !important;
-    # }
-
-    # /* Next Chapter button */
-    # .stButton > button:has(span:contains("Next Chapter")) {
-    #     white-space: nowrap !important;
-    #     background-color: #0D0B1A !important;
-    #     color: #e7b66c !important;
-    #     border: 2px solid #e7b66c !important;
-    #     border-radius: 8px !important;
-    #     padding: 10px 20px !important;
-    #     font-size: 16px !important;
-    # }
-    # .stButton > button:has(span:contains("Next Chapter")):hover {
-    #     background-color: #e7b66c !important;
-    #     color: #0D0B1A !important;
-    # }
-    # </style>
-    # """, unsafe_allow_html=True)
-
-
-    # -----------------------
-    # Navigation Buttons (Prev / Next)
-    # -----------------------
-    
-
-
 
 
 
