@@ -393,7 +393,7 @@ def main():
     }}
     </style>
     <div class="top-right-gif">
-        <img src="data:image/gif;base64,{b64_gif}" width="200">
+        <img src="data:image/gif;base64,{b64_gif}" width="300">
     </div>
     """, unsafe_allow_html=True)
 
