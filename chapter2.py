@@ -55,7 +55,7 @@ def display_content():
 
     text0 = """
     <h2>Chapter 2: Anger Has a Name – Wahid</h2>
-    <p>A new chapter will come out every Wednesday...... </p>
+    <p>A new chapter will come out every Wednesday......</p>
     """
     create_image_text_layout(text_content=text0, layout="full")
 
@@ -158,13 +158,48 @@ def display_content():
 #     create_image_text_layout("attached_assets/generated_images/chap22.png", text4, layout="side", image_position="right")
 
 
-    # text5 = """
-    # <p>
-    # The Ego Trap: Maine dekha, Wahid ko sabse zyada trigger karta tha uska ego. Jab koi usse oppose karta, ya uski izzat ko chhoti si chot bhi lagti, toh woh explode kar jata.
+#     text5 = """
+#     <p>
+#     The Ego Trap: Maine dekha, Wahid ko sabse zyada trigger karta tha uska ego. Jab koi usse oppose karta, ya uski izzat ko chhoti si chot bhi lagti, toh woh explode kar jata.
 
-    # Ek baar maine deliberately usse ek debate me uljha diya. Usne chillana shuru kiya, lekin main calm raha. Fir usi calmness me maine usse samjhaya:
-    # "Tu gusse me jo bolta hai, usse teri baat ki value khatam ho jati hai. Power tere gusse me nahi, teri awaaz ki authority me hai."
+#     Ek baar maine deliberately usse ek debate me uljha diya. Usne chillana shuru kiya, lekin main calm raha. Fir usi calmness me maine usse samjhaya:
+#     "Tu gusse me jo bolta hai, usse teri baat ki value khatam ho jati hai. Power tere gusse me nahi, teri awaaz ki authority me hai."
 
-    # Woh chup ho gaya. Yehi ego redirection technique hai – banda jab apne hi weapon (awaaz) ka positive angle sunta hai, toh apna gussa digest kar leta hai. </p>
-    # """
-    # create_image_text_layout("attached_assets/generated_images/chap22.png", text5, layout="side", image_position="left")
+#     Woh chup ho gaya. Yehi ego redirection technique hai – banda jab apne hi weapon (awaaz) ka positive angle sunta hai, toh apna gussa digest kar leta hai. </p>
+#     """
+#     create_image_text_layout("attached_assets/generated_images/chap22.png", text5, layout="side", image_position="left")
+
+
+
+#     text9 = """
+#     <p>
+#     The Psychological Punch: Mujhe ek cheez samajh aayi:
+#    <ul>
+#     <li>Gussa ek shield hai, jo broken insaan apne dard ko chhupane ke liye pehenta hai.</li>
+#     <li>Backchodi ek mask hai, jisse banda apni tanhayi ko cover karta hai.</li>
+#     <li>Loyalty ek trap hai – agar tum ek insaan ko genuinely loyal feel kara do, woh tumse kabhi door nahi hoga.</li>
+#     </ul>
+#     </p>
+#     """
+#     create_image_text_layout("attached_assets/generated_images/chap22.png", text9, layout="side", image_position="left")
+
+
+
+
+#     text10 = """
+#     <p>
+#     The Psychological Punch: Mujhe ek cheez samajh aayi:
+#     <ul>
+#     <li>Gussa ek shield hai, jo broken insaan apne dard ko chhupane ke liye pehenta hai.</li>
+#     <li>Backchodi ek mask hai, jisse banda apni tanhayi ko cover karta hai.</li>
+#     <li>Loyalty ek trap hai – agar tum ek insaan ko genuinely loyal feel kara do, woh tumse kabhi door nahi hoga.</li>
+#     </ul>
+#     </p>
+#     <p>
+#     End Note: Wahid meri zindagi me ek paradox tha – ek aisa insaan jisme dosti bhi thi, andhera bhi, comedy bhi aur lava bhi. Aur ek pal mujhe laga – Kismat hi hoti hai jo hume aise logon se milwati hai. Shayad main Wahid ke liye ek mirror tha – jo uske gusse, uske dard aur uski ego ka asli chehra dikha raha tha. Aur shayad Wahid mere liye ek test tha – ki main apni loyalty kitni door tak nibha sakta hoon.
+#     Anger had a face.
+#     Anger had a voice.
+#     Anger had a name – Wahid.
+#     </p>
+#     """
+#     create_image_text_layout("attached_assets/generated_images/chap22.png", text10, layout="side", image_position="left")
