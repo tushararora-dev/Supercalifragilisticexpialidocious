@@ -118,7 +118,7 @@ def display_content():
 
 
     text6 = """
-    <p>Aur wahi din tha, jab maine samajh liya – dosti, rishton, ya bharose ke piche ek aur game chalta hai. Ek hidden game. Aur main us game ka hissa ban chuka tha. Lekin jo sabse interesting tha, wo tha mera apna tareeka. Malik sharp tha, par main <span style="color:#FF5733;">Chanakya Niti</span> apne style me chalata tha. Sam, Dam, Dand, Bhed. baat nikalwane ke 4 tareeke:
+    <p>Aur wahi din tha, jab maine samajh liya – dosti, rishton, ya bharose ke piche ek aur game chalta hai. Ek hidden game. Aur main us game ka hissa ban chuka tha. Lekin jo sabse interesting tha, wo tha mera apna tareeka. Malik sharp tha, par main <span style="color:#FF5733;">Chanakya Niti</span> apne style me chalata tha. Saam, Daam, Dand, Bhed. baat nikalwane ke 4 tareeke:
     <ol>
     <li><strong><span style="color:#FF5733;">Saam</span></strong> – Samajhdaari aur buddhi se, samajhkar aur thodi chalaki se baat nikalwana.</li>
     <li><strong><span style="color:#FF5733;">Daam</span></strong> – Kuch badle mein dene ya lene ka vaada karke, yaani kuch exchange karke baat nikalwana.</li>
