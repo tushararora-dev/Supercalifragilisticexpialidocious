@@ -92,7 +92,7 @@ def main():
     # Sidebar styling + nav
     # -----------------------
     # Load PNG and convert to base64
-    with open("skull.png", "rb") as f:
+    with open("skull2.png", "rb") as f:
         img_bytes = f.read()
     b64_cursor = base64.b64encode(img_bytes).decode()
 
