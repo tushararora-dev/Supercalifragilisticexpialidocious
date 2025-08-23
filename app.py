@@ -473,7 +473,7 @@ def main():
             if chapter_num < 11:
                 st.markdown(
                     f'<a href="?chapter={chapter_num+1}#top" target="_self" '
-                    'style="display:inline-block;padding:10px 14px;border-radius:8px;float:right;'
+                    'style="display:inline-block;padding:10px 14px;border-radius:8px;float:left;'
                     'border:2px solid #e7b66c;color:oldlace;background:#0D0B1A;'
                     'text-decoration:none;">Next Chapter ▶</a>',
                     unsafe_allow_html=True
