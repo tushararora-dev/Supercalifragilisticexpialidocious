@@ -27,7 +27,7 @@ def display_content():
     }
 
     td {
-        border: 1px solid #444;
+        border: 2px solid #444 !important;
         padding: 5px;
         font-size: 16px !important;
         line-height: 1.2 !important;
@@ -50,7 +50,7 @@ def display_content():
     """,
     unsafe_allow_html=True
     )
-
+    create_image_text_layout("attached_assets/generated_images/chap3main.jpg", layout="full")
     text0 = """
     <h2>Chapter 3: The Gentle Entry of Karishma</h2>
 
