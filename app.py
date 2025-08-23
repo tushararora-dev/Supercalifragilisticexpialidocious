@@ -142,9 +142,13 @@ def display_home(chapter_names):
         st.markdown("Aaj jab main apni kahani likhne baitha hoon, to sabse pehla sawal mere dimag mein ghoom raha hai – “Akhir main Malik se mila hi kyun?” Aur jab mila… to meri zindagi ne ek naya rang le liya ...")
 
     with col3:
-        if st.button("Read More ▶", key="read_1"):
-            st.session_state.selected_chapter = 1
-            st.rerun()
+        st.markdown(
+            '<a href="?chapter=1#top" target="_self" '
+            'style="display:inline-block;padding:10px 14px;border-radius:8px;'
+            'border:2px solid #e7b66c;color:oldlace;background:#0D0B1A;'
+            'text-decoration:none;">Read More ▶</a>',
+            unsafe_allow_html=True
+        )
 
     # st.markdown("---")
 
@@ -166,9 +170,13 @@ def display_home(chapter_names):
         st.markdown("Malik ke sath meri baat-chit chal hi rahi thi ki ek aur chehra meri zindagi me aaya – Wahid. Random voice channel me mulaqat hui thi. Pehle to friendly roast, halka-phulka mazaak, aur ...")
 
     with col3:
-        if st.button("Read More ▶", key="read_2"):
-            st.session_state.selected_chapter = 2
-            st.rerun()
+        st.markdown(
+            '<a href="?chapter=2#top" target="_self" '
+            'style="display:inline-block;padding:10px 14px;border-radius:8px;'
+            'border:2px solid #e7b66c;color:oldlace;background:#0D0B1A;'
+            'text-decoration:none;">Read More ▶</a>',
+            unsafe_allow_html=True
+        )
 
     # st.markdown("---")
 
@@ -190,9 +198,13 @@ def display_home(chapter_names):
         st.markdown("Working on it...")
 
     with col3:
-        if st.button("Read More ▶", key="read_3"):
-            st.session_state.selected_chapter = 3
-            st.rerun()
+        st.markdown(
+            '<a href="?chapter=3#top" target="_self" '
+            'style="display:inline-block;padding:10px 14px;border-radius:8px;'
+            'border:2px solid #e7b66c;color:oldlace;background:#0D0B1A;'
+            'text-decoration:none;">Read More ▶</a>',
+            unsafe_allow_html=True
+        )
 
     st.markdown("---")
 
@@ -202,29 +214,45 @@ def main():
     # Page configuration
     st.set_page_config(page_title="Supercalifragilisticexpialidocious", page_icon="💀", layout="wide")
 
+    # Auto-scroll to top if viewing a chapter (not home)
+    if st.session_state.get("selected_chapter") != "home":
+        st.markdown("""
+            <script>
+            window.onload = function() {
+                window.scrollTo({top: 0, behavior: "instant"});
+            };
+            </script>
+        """, unsafe_allow_html=True)
+
     # Put a top anchor so #top works
     st.markdown('<div id="top"></div>', unsafe_allow_html=True)
 
     # -----------------------
-    # Handle nav query param and session state
+    # Handle URL query params + session state
     # -----------------------
     if "selected_chapter" not in st.session_state:
         st.session_state.selected_chapter = "home"
 
-        params = st.query_params
-        nav = params.get("nav")
+    params = st.query_params
 
-        if nav and isinstance(st.session_state.selected_chapter, int):
-            if nav == "prev" and st.session_state.selected_chapter > 1:
-                st.session_state.selected_chapter -= 1
-            elif nav == "next" and st.session_state.selected_chapter < 11:
-                st.session_state.selected_chapter += 1
-            st.query_params.clear()
-            st.rerun()
-        elif nav:
-            # Agar "home" par ho aur URL ?nav=prev/next hai to safely ignore
-            st.query_params.clear()
-            st.rerun()
+    # Deep-link: /?chapter=3 loads Chapter 3 from the top
+    ch = params.get("chapter")
+    if ch:
+        try:
+            ch_num = int(ch)
+            if 1 <= ch_num <= 11:
+                st.session_state.selected_chapter = ch_num
+        except:
+            pass  # ignore bad values
+
+    # Keep your existing 'nav' handling if you still want it
+    nav = params.get("nav")
+    if nav and isinstance(st.session_state.selected_chapter, int):
+        if nav == "prev" and st.session_state.selected_chapter > 1:
+            st.session_state.selected_chapter -= 1
+        elif nav == "next" and st.session_state.selected_chapter < 11:
+            st.session_state.selected_chapter += 1
+        st.query_params.clear()
 
     # -----------------------
     # Sidebar styling + nav
@@ -312,16 +340,22 @@ def main():
         11: "The Puppeteer's Confession"
     }
 
+    # -----------------------
+    # Sidebar chapter links (real navigation)
+    # -----------------------
     for i in range(1, 12):
-        btn_type = "primary" if i == st.session_state.selected_chapter else "secondary"
-        if st.sidebar.button(
-            f"Chapter {i}: {chapter_names[i]}",
-            key=f"chapter_{i}",
-            use_container_width=True,
-            type=btn_type,
-        ):
-            st.session_state.selected_chapter = i
-            st.rerun()
+        active = (i == st.session_state.selected_chapter)
+        target = "_self"  # change to "_blank" if you want new tab
+        base = "display:block;width:100%;padding:10px 12px;border-radius:10px;text-decoration:none;margin-bottom:8px;"
+        if active:
+            style = base + "background:#0D0B1A;color:oldlace;border:2px solid #e7b66c;"
+        else:
+            style = base + "background:transparent;color:oldlace;border:1px solid #444;"
+        st.sidebar.markdown(
+            f'<a href="?chapter={i}#top" target="{target}" style="{style}">Chapter {i}: {chapter_names[i]}</a>',
+            unsafe_allow_html=True
+        )
+
 
 
     # -----------------------
@@ -397,42 +431,66 @@ def main():
         chapter_module = load_chapter_content(chapter_num)
         display_chapter_content(chapter_module, chapter_num)
 
-        col1, col2 = st.columns([1, 1])
-
-        with col1:
-            prev_col, _ = st.columns([3, 2])
-            with prev_col:
-                if chapter_num > 1:
-                    if st.button("◀ Previous Chapter", key="prev_btn"):
-                        st.session_state.selected_chapter = chapter_num - 1
-                        st.rerun()
-
-        with col2:
-            _, next_col = st.columns([3, 2])
-            with next_col:
-                if chapter_num < 11:
-                    if st.button("Next Chapter ▶", key="next_btn"):
-                        st.session_state.selected_chapter = chapter_num + 1
-                        st.rerun()
+        left, right = st.columns([1,1])
+        with left:
+            if chapter_num > 1:
+                st.markdown(
+                    f'<a href="?chapter={chapter_num-1}#top" target="_self" '
+                    'style="display:inline-block;padding:10px 14px;border-radius:8px;'
+                    'border:2px solid #e7b66c;color:oldlace;background:#0D0B1A;'
+                    'text-decoration:none;">◀ Previous Chapter</a>',
+                    unsafe_allow_html=True
+                )
+        with right:
+            if chapter_num < 11:
+                st.markdown(
+                    f'<a href="?chapter={chapter_num+1}#top" target="_self" '
+                    'style="display:inline-block;padding:10px 14px;border-radius:8px;float:right;'
+                    'border:2px solid #e7b66c;color:oldlace;background:#0D0B1A;'
+                    'text-decoration:none;">Next Chapter ▶</a>',
+                    unsafe_allow_html=True
+                )
 
 
 
     
-    # -----------------------
-    # Review Form
-    # -----------------------
+    st.markdown(
+        """
+        <style>
+        /* Wrap the whole form in a styled div */
+        div[data-testid="stForm"] {
+            border: 2px solid orange;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        # /* Form border */
+        # div[data-testid="stForm"] {
+        #     border: 2px solid orange;
+        #     border-radius: 10px;
+        #     padding: 20px;
+        #     margin-bottom: 20px;
+        # }
 
-    st.markdown("""
-    <style>
-    .review-form {
-        border: 2px solid #1E90FF; /* Blue border */
-        border-radius: 10px;
-        padding: 20px;
-        background-color: #f9f9f9; /* Light background */
-    }
-    </style>
-    """, unsafe_allow_html=True)
+        # /* Submit button border */
+        # div.stButton > button {
+        #     border: 2px solid orange !important;
+        #     border-radius: 8px;
+        #     background-color: white;
+        #     color: orange;
+        #     font-weight: bold;
+        #     padding: 0.5em 1em;
+        # }
 
+        # /* Hover effect */
+        # div.stButton > button:hover {
+        #     background-color: orange;
+        #     color: white;
+        # }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
 
     st.markdown("## Leave a Review")
     with st.form("review_form"):
@@ -453,12 +511,8 @@ def main():
     st.markdown("""
     <style>
     html {
-        scroll-behavior: smooth; /* enables smooth scroll */
-    }
-    html, body {
         scroll-behavior: smooth;
     }
-
     .scroll-buttons {
         position: fixed;
         bottom: 20px;
@@ -479,7 +533,7 @@ def main():
         color:#e7b66c !important;
         border:2px solid #e7b66c;
         text-decoration:none !important;
-        transition: all 0.3s ease; /* smooth hover transition */
+        transition: all 0.3s ease;
     }
     .scroll-btn:hover {
         background:#e7b66c !important;
@@ -492,10 +546,14 @@ def main():
     }
     </style>
 
-    <!-- invisible anchors for scroll target -->
     <div id="top"></div>
 
     <div class="scroll-buttons" aria-hidden="true">
+        <a class="scroll-btn" href="?chapter=home#top" title="Go to Home">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M3 9.5l9-7 9 7V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1V9.5z"/>
+            </svg>
+        </a>
         <a class="scroll-btn" href="#top" title="Scroll to top">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path d="M12 4l-8 8h6v8h4v-8h6z"/>
@@ -508,9 +566,11 @@ def main():
         </a>
     </div>
 
-    <!-- target for bottom scroll -->
     <div id="bottom"></div>
     """, unsafe_allow_html=True)
+
+
+
 
     # Sticky GIF at top-right, hidden on mobile
     st.markdown(f"""
@@ -534,6 +594,16 @@ def main():
         <img src="data:image/gif;base64,{b64_gif}" width="200">
     </div>
     """, unsafe_allow_html=True)
+
+    # Force scroll to top on each render
+    st.markdown("""
+        <script>
+        window.addEventListener('load', function() {
+            window.scrollTo(0, 0);
+        });
+        </script>
+    """, unsafe_allow_html=True)
+
 
 if __name__ == "__main__":
     main()
