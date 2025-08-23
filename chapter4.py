@@ -50,7 +50,7 @@ def display_content():
     """,
     unsafe_allow_html=True
     )
-
+    create_image_text_layout("attached_assets/generated_images/chap4main.jpg", layout="full")
     text0 = """
     <h2>Chapter 4: When Destiny Chose Four Souls to Meet</h2>
 
