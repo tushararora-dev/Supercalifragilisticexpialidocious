@@ -67,7 +67,7 @@ def display_content():
     Pehle mujhe lagta woh bas ek casual dost hai, lekin dheere-dheere maine dekha ki Wahid apni taraf se rishte ko aage badhane ki koshish kar raha tha. Maine socha, agar banda khud haath badha raha hai, toh main bhi peeche kyu rahun? Aur fir main uski fights me shaamil hone laga, uski madad karne laga… aur kabhi-kabhi sirf entertainment ke liye bhi uska saath dene laga.
     </p>
     """
-    create_image_text_layout("attached_assets/generated_images/chap22.png", text1, layout="side", image_position="right")
+    create_image_text_layout("attached_assets/generated_images/chap22.jpg", text1, layout="side", image_position="right")
 
 
 

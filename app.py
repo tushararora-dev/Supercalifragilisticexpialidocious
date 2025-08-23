@@ -6,10 +6,10 @@ from pathlib import Path
 import base64
 # Clear all cached data
 st.cache_data.clear()
-
+import math
 
 # Read GIF and encode to base64
-with open("ss.png", "rb") as f:
+with open("ssgif.gif", "rb") as f:
     gif_bytes = f.read()
 b64_gif = base64.b64encode(gif_bytes).decode()
 
@@ -69,6 +69,135 @@ def display_chapter_content(chapter_module, chapter_num):
         st.markdown(f'<div class="justified-text">Error displaying Chapter {chapter_num}: {str(e)}</div>', unsafe_allow_html=True)
 
 
+def display_home(chapter_names):
+
+    st.markdown(
+        """
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Beth+Ellen&display=swap');
+
+        h2 {
+            font-family: 'UnifrakturCook', cursive !important;
+            font-size: 25px !important;
+            color: #e7b66c !important;
+        }
+
+        /* Vignette effect for main image */
+        .vignette-image {
+            position: relative;
+            width: 100%;
+            # max-width: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .vignette-image::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            background: radial-gradient(circle, rgba(13,11,26,0) 60%, rgba(13,11,26,0.95) 100%);
+
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+    # Main image with vignette
+    img_path = "attached_assets/generated_images/main.jpg"
+    if os.path.exists(img_path):
+        with open(img_path, "rb") as f:
+            img_bytes = f.read()
+            encoded = base64.b64encode(img_bytes).decode()
+        st.markdown(
+            f"""
+            <div class="vignette-image">
+                <img src="data:image/jpg;base64,{encoded}" style="width:100%; display:block;"/>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+    else:
+        st.markdown("🛠️ Working on it...")
+
+    st.markdown(" ## Chapters :")
+
+    # ---------------------------
+    # Chapter 1 (manual)
+    # ---------------------------
+    col1, col2, col3 = st.columns([1, 3, 1])
+
+    with col1:
+        img_path = "attached_assets/generated_images/chap1main.jpg"
+        if os.path.exists(img_path):
+            st.image(img_path, use_container_width=True)
+        else:
+            st.markdown("🛠️ Working on it...")
+
+    with col2:
+        st.markdown(" ## Chapter 1: When Tahir Found Malik, Chaos Found Me")
+        st.markdown("Aaj jab main apni kahani likhne baitha hoon, to sabse pehla sawal mere dimag mein ghoom raha hai – “Akhir main Malik se mila hi kyun?” Aur jab mila… to meri zindagi ne ek naya rang le liya ...")
+
+    with col3:
+        if st.button("Read More ▶", key="read_1"):
+            st.session_state.selected_chapter = 1
+            st.rerun()
+
+    # st.markdown("---")
+
+    # ---------------------------
+    # Chapter 2 (manual)
+    # ---------------------------
+    col1, col2, col3 = st.columns([1, 3, 1])
+
+    with col1:
+        img_path = "attached_assets/generated_images/chap2main.jpg"
+        if os.path.exists(img_path):
+            st.image(img_path, use_container_width=True)
+        else:
+            st.markdown("🛠️ Working on it...")
+
+    with col2:
+        st.markdown(" ## Chapter 2: Anger Has a Name – Wahid")
+
+        st.markdown("Malik ke sath meri baat-chit chal hi rahi thi ki ek aur chehra meri zindagi me aaya – Wahid. Random voice channel me mulaqat hui thi. Pehle to friendly roast, halka-phulka mazaak, aur ...")
+
+    with col3:
+        if st.button("Read More ▶", key="read_2"):
+            st.session_state.selected_chapter = 2
+            st.rerun()
+
+    # st.markdown("---")
+
+        # ---------------------------
+    # Chapter 3 (manual)
+    # ---------------------------
+    col1, col2, col3 = st.columns([1, 3, 1])
+
+    with col1:
+        img_path = "attached_assets/generated_images/chap3main.jpg"
+        if os.path.exists(img_path):
+            st.image(img_path, use_container_width=True)
+        else:
+            st.markdown("🛠️ Working on it...")
+
+    with col2:
+        st.markdown(" ## Chapter 3: The Gentle Entry of Karishma")
+        
+        st.markdown("Working on it...")
+
+    with col3:
+        if st.button("Read More ▶", key="read_3"):
+            st.session_state.selected_chapter = 3
+            st.rerun()
+
+    st.markdown("---")
+
+
+
 def main():
     # Page configuration
     st.set_page_config(page_title="Supercalifragilisticexpialidocious", page_icon="💀", layout="wide")
@@ -80,18 +209,22 @@ def main():
     # Handle nav query param and session state
     # -----------------------
     if "selected_chapter" not in st.session_state:
-        st.session_state.selected_chapter = 1
+        st.session_state.selected_chapter = "home"
 
-    params = st.query_params
-    nav = params.get("nav")
-    if nav:
-        if nav == "prev" and st.session_state.selected_chapter > 1:
-            st.session_state.selected_chapter -= 1
-        elif nav == "next" and st.session_state.selected_chapter < 11:
-            st.session_state.selected_chapter += 1
-        # clear query and rerun so it doesn't trigger again
-        st.query_params.clear()
-        st.rerun()
+        params = st.query_params
+        nav = params.get("nav")
+
+        if nav and isinstance(st.session_state.selected_chapter, int):
+            if nav == "prev" and st.session_state.selected_chapter > 1:
+                st.session_state.selected_chapter -= 1
+            elif nav == "next" and st.session_state.selected_chapter < 11:
+                st.session_state.selected_chapter += 1
+            st.query_params.clear()
+            st.rerun()
+        elif nav:
+            # Agar "home" par ho aur URL ?nav=prev/next hai to safely ignore
+            st.query_params.clear()
+            st.rerun()
 
     # -----------------------
     # Sidebar styling + nav
@@ -104,7 +237,8 @@ def main():
     # Inject CSS
     # Inject CSS
     st.markdown(f"""
-    <style>
+    <style>      
+
     /* Apply custom cursor everywhere */
     *, body, html {{
         cursor: url("data:image/png;base64,{b64_cursor}") 16 16, auto !important;
@@ -249,34 +383,38 @@ def main():
 
 
     st.title("Supercalifragilisticexpialidocious")
-    st.markdown("<div class='beth'>- Danjin Master</div>", unsafe_allow_html=True)
+    st.markdown("<div class='beth'>- Danjin Master<br><br></div>", unsafe_allow_html=True)
 
     # -----------------------
     # Load & show chapter
     # -----------------------
-    chapter_module = load_chapter_content(st.session_state.selected_chapter)
-    display_chapter_content(chapter_module, st.session_state.selected_chapter)
+    if st.session_state.selected_chapter == "home":
+        display_home(chapter_names)
+    else:
+        chapter_num = int(st.session_state.selected_chapter)
 
+        # Load & show chapter
+        chapter_module = load_chapter_content(chapter_num)
+        display_chapter_content(chapter_module, chapter_num)
 
-    col1, col2 = st.columns([1, 1])
+        col1, col2 = st.columns([1, 1])
 
-    with col1:
-        # inner columns: button sits in the left-most sliver
-        prev_col, _ = st.columns([3, 2])
-        with prev_col:
-            if st.session_state.get("selected_chapter", 1) > 1:
-                if st.button("◀ Previous Chapter", key="prev_btn"):
-                    st.query_params["nav"] = "prev"
-                    st.rerun()
+        with col1:
+            prev_col, _ = st.columns([3, 2])
+            with prev_col:
+                if chapter_num > 1:
+                    if st.button("◀ Previous Chapter", key="prev_btn"):
+                        st.session_state.selected_chapter = chapter_num - 1
+                        st.rerun()
 
-    with col2:
-        # inner columns: right-most sliver holds the button
-        _, next_col = st.columns([3, 2])
-        with next_col:
-            if st.session_state.get("selected_chapter", 1) < 11:
-                if st.button("Next Chapter ▶", key="next_btn"):
-                    st.query_params["nav"] = "next"
-                    st.rerun()
+        with col2:
+            _, next_col = st.columns([3, 2])
+            with next_col:
+                if chapter_num < 11:
+                    if st.button("Next Chapter ▶", key="next_btn"):
+                        st.session_state.selected_chapter = chapter_num + 1
+                        st.rerun()
+
 
 
     
@@ -379,11 +517,11 @@ def main():
     <style>
     .top-right-gif {{
         position: fixed;
-        top: 70px;
-        right: -3px;
+        top: 20px;
+        right: 0px;
         z-index: 1000;
-        border: 2px solid #dca65b ;
-        border-radius: 2px;
+        # border: 2px solid #dca65b ;
+        # border-radius: 2px;
     }}
 
     @media (max-width: 768px) {{
@@ -393,7 +531,7 @@ def main():
     }}
     </style>
     <div class="top-right-gif">
-        <img src="data:image/gif;base64,{b64_gif}" width="300">
+        <img src="data:image/gif;base64,{b64_gif}" width="200">
     </div>
     """, unsafe_allow_html=True)
 
