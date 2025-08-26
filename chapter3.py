@@ -223,10 +223,6 @@ def display_content():
     create_image_text_layout("attached_assets/generated_images/chap38.jpg", text10, layout="side", image_position="left")
 
 
-
-
-
-
     create_image_text_layout("attached_assets/generated_images/chap3ban.jpg", layout="full")
     text111 = """
     <p> <div class='beth1'>A battle of words is not won by breaking the opponent, but by capturing the hearts of those who listen.

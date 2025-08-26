@@ -52,7 +52,7 @@ def display_content():
     )
 
     text0 = """
-    <h2>Chapter 5: Behind the Cool Mask</h2>
+    <h2>Chapter 5: When Realization Demands Resolution</h2>
 
     <p>A new chapter will come out every Wednesday......</p>
 

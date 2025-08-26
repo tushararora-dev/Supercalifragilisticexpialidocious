@@ -219,7 +219,7 @@ def display_home(chapter_names):
     with col2:
         st.markdown(" ## Chapter 4: When Destiny Chose Four Souls to Meet")
         
-        st.markdown("Working on it...")
+        st.markdown("Kuch log milte nahi, milaye jaate hain. Aur jab taqdeer chaar raahon ko ek mod pe laati hai… kahani ban jaati hai. Taqdeer ka khel ajeeb hota hai… kabhi log milte hain toh lagta hai bas ek normal mulaqat hai ...")
 
     with col3:
         st.markdown(
@@ -233,28 +233,28 @@ def display_home(chapter_names):
 
     # Chapter 5 (manual)
     # ---------------------------
-    # col1, col2, col3 = st.columns([1, 3, 1])
+    col1, col2, col3 = st.columns([1, 3, 1])
 
-    # with col1:
-    #     img_path = "attached_assets/generated_images/chap5main.jpg"
-    #     if os.path.exists(img_path):
-    #         st.image(img_path, use_container_width=True)
-    #     else:
-    #         st.markdown("🛠️ Working on it...")
+    with col1:
+        img_path = "attached_assets/generated_images/chap5main.jpg"
+        if os.path.exists(img_path):
+            st.image(img_path, use_container_width=True)
+        else:
+            st.markdown("🛠️ Working on it...")
 
-    # with col2:
-    #     st.markdown(" ## Chapter 5: Goodbye Malik")
+    with col2:
+        st.markdown(" ## Chapter 5: When Realization Demands Resolution")
         
-    #     st.markdown("Working on it...")
+        st.markdown("Working on it...")
 
-    # with col3:
-    #     st.markdown(
-    #         '<a href="?chapter=5#top" target="_self" '
-    #         'style="display:inline-block;padding:10px 14px;border-radius:8px;'
-    #         'border:2px solid #e7b66c;color:oldlace;background:#0D0B1A;'
-    #         'text-decoration:none;">Read More ▶</a>',
-    #         unsafe_allow_html=True
-    #     )
+    with col3:
+        st.markdown(
+            '<a href="?chapter=5#top" target="_self" '
+            'style="display:inline-block;padding:10px 14px;border-radius:8px;'
+            'border:2px solid #e7b66c;color:oldlace;background:#0D0B1A;'
+            'text-decoration:none;">Read More ▶</a>',
+            unsafe_allow_html=True
+        )
 
 
 
@@ -265,6 +265,19 @@ def display_home(chapter_names):
 def main():
     # Page configuration
     st.set_page_config(page_title="Supercalifragilisticexpialidocious", page_icon="💀", layout="wide")
+    # Fake desktop mode by scaling content on small screens
+    st.markdown("""
+        <style>
+        @media (max-width: 900px) {
+            [data-testid="stAppViewContainer"] > .main {
+                transform: scale(0.8);
+                transform-origin: top left;
+                width: 125% !important; /* 1 / 0.8 = 125% */
+            }
+        }
+        </style>
+    """, unsafe_allow_html=True)
+
 
     # Auto-scroll to top if viewing a chapter (not home)
     if st.session_state.get("selected_chapter") != "home":
@@ -383,17 +396,18 @@ def main():
         2: "Anger Has a Name: Wahid",
         3: "The Gentle Entry of Karishma",
         4: "When Destiny Chose Four Souls to Meet",
-        5: "Goodbye Malik",
-        6: "The Emotional Trap",
-        7: "The Spark Against Wahid",
-        8: "The Spark Against Karishma",
-        9: "The Puppeteer's Confession"
+        5: "When Realization Demands Resolution",
+        6: "Goodbye Malik",
+        7: "The Emotional Trap",
+        8: "The Spark Against Wahid",
+        9: "The Spark Against Karishma",
+        10: "The Puppeteer's Confession"
     }
 
     # -----------------------
     # Sidebar chapter links (real navigation)
     # -----------------------
-    for i in range(1, 10):
+    for i in range(1, 11):
         active = (i == st.session_state.selected_chapter)
         target = "_self"  # change to "_blank" if you want new tab
         base = "display:block;width:100%;padding:10px 12px;border-radius:10px;text-decoration:none;margin-bottom:8px;"
@@ -492,7 +506,7 @@ def main():
                     unsafe_allow_html=True
                 )
         with right:
-            if chapter_num < 9:
+            if chapter_num < 10:
                 st.markdown(
                     f'<a href="?chapter={chapter_num+1}#top" target="_self" '
                     'style="display:inline-block;padding:10px 14px;border-radius:8px;float:right;'
