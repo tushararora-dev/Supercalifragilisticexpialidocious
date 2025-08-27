@@ -245,7 +245,7 @@ def display_home(chapter_names):
     with col2:
         st.markdown(" ## Chapter 5: When Realization Demands Resolution")
         
-        st.markdown("Working on it...")
+        st.markdown("""Kehte hain, "Jis din tumhe pata chale ki tum galat ho, wahi din tum sahi jeena shuru kar dete ho.", “Insaan ki zindagi tab badalti hai jab usse pata chalta hai ki wo galat tha ...""")
 
     with col3:
         st.markdown(
@@ -256,6 +256,31 @@ def display_home(chapter_names):
             unsafe_allow_html=True
         )
 
+    # Chapter 6 (manual)
+    # ---------------------------
+    col1, col2, col3 = st.columns([1, 3, 1])
+
+    with col1:
+        img_path = "attached_assets/generated_images/chap6main.jpg"
+        if os.path.exists(img_path):
+            st.image(img_path, use_container_width=True)
+        else:
+            st.markdown("🛠️ Working on it...")
+
+    with col2:
+        st.markdown(" ## Chapter 6: Goodbye Malik")
+        
+        st.markdown("🛠️ Working on it...")
+
+
+    with col3:
+        st.markdown(
+            '<a href="?chapter=6#top" target="_self" '
+            'style="display:inline-block;padding:10px 14px;border-radius:8px;'
+            'border:2px solid #e7b66c;color:oldlace;background:#0D0B1A;'
+            'text-decoration:none;">Read More ▶</a>',
+            unsafe_allow_html=True
+        )
 
 
     st.markdown("---")
