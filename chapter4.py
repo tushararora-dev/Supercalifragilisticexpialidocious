@@ -188,7 +188,7 @@ def display_content():
 
     </p>
     """
-    create_image_text_layout("attached_assets/generated_images/chap47.jpg", text4, layout="side", image_position="left")
+    create_image_text_layout("attached_assets/generated_images/chap46.jpg", text4, layout="side", image_position="left")
 
 
 
