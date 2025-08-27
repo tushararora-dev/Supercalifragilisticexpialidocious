@@ -290,12 +290,7 @@ def display_home(chapter_names):
 def main():
     # Page configuration
     st.set_page_config(page_title="Supercalifragilisticexpialidocious", page_icon="💀", layout="wide")
-    # Fake desktop mode by scaling content on small screens
-    # Inject meta viewport + CSS + JS to force desktop mode feel
-    # Force desktop-like scaling only for mobile devices
-    # Force desktop view only for mobile users
-# Force desktop view only for mobile users and auto zoom-out + close sidebar
-# Force desktop view only for mobile users + auto zoom-out + close sidebar by default on mobile
+
     force_desktop_mobile = """
     <head>
     <meta name="viewport" content="width=1280, initial-scale=0.4, maximum-scale=0.4">
