@@ -291,17 +291,35 @@ def main():
     # Page configuration
     st.set_page_config(page_title="Supercalifragilisticexpialidocious", page_icon="💀", layout="wide")
     # Fake desktop mode by scaling content on small screens
-    st.markdown("""
-        <style>
-        @media (max-width: 900px) {
-            [data-testid="stAppViewContainer"] > .main {
-                transform: scale(0.8);
-                transform-origin: top left;
-                width: 125% !important; /* 1 / 0.8 = 125% */
-            }
+    # Inject meta viewport + CSS + JS to force desktop mode feel
+    # Force desktop-like scaling only for mobile devices
+    # Force desktop view only for mobile users
+# Force desktop view only for mobile users and auto zoom-out + close sidebar
+# Force desktop view only for mobile users + auto zoom-out + close sidebar by default on mobile
+    force_desktop_mobile = """
+    <head>
+    <meta name="viewport" content="width=1280, initial-scale=0.4, maximum-scale=0.4">
+    <style>
+    @media (max-width: 768px) {
+        html, body, [data-testid="stAppViewContainer"] {
+            min-width: 1280px !important;
+            overflow-x: auto !important;
         }
-        </style>
-    """, unsafe_allow_html=True)
+        /* Close sidebar by default on mobile */
+        [data-testid="stSidebar"] {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        /* Ensure toggle button still works */
+        button[title="Menu"] {
+            z-index: 9999 !important;
+        }
+    }
+    </style>
+    </head>
+    """
+    st.markdown(force_desktop_mobile, unsafe_allow_html=True)
+
 
 
     # Auto-scroll to top if viewing a chapter (not home)
