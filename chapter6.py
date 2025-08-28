@@ -121,7 +121,7 @@ def display_content():
   <tr><td><span style="color:#FF5733;">Illusion of Truth Effect</span> – Psychology Fact: Human brain repetition ko truth samajhne lagta hai.</td></tr>
   <tr><td><span style="color:#FF5733;">Manipulator VP Concept</span> – Manipulator kabhi front me nahi aata.</td></tr>
   <tr><td><span style="color:#FF5733;">Covert Leadership</span> – Ye ek covert leadership style hai — power me rehna, par spotlight se door.</td></tr>
-  <tr><td><span style="color:#FF5733;">Long Game Listening & Persona Switching</span> – Lambi Game Plan – “Achha listener bano, multi personality Discord chahiye.”</td></tr>
+  <tr><td><span style="color:#FF5733;">Long Game Listening & Persona Switching</span> – Lambi Game Plan – “Achha listener bano, multi personality Disorder chahiye.”</td></tr>
   <tr><td><span style="color:#FF5733;">Social Engineering</span> – Ye classic social engineering hai — har group me alag persona rakhna.</td></tr>
   <tr><td><span style="color:#FF5733;">Confusion Tactic</span> – Relationship me aao, phir piche hat jao.</td></tr>
   <tr><td><span style="color:#FF5733;">Emotional Push-Pull</span> – Emotional push-pull game — addictive hota hai.</td></tr>
