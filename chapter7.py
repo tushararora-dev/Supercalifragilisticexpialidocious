@@ -52,7 +52,7 @@ def display_content():
     )
 
     text0 = """
-    <h2>Chapter 7: Goodbye Malik</h2>
+    <h2>Chapter 7: The Spark Against Wahid</h2>
 
     <p>A new chapter will come out every Wednesday......</p>
 

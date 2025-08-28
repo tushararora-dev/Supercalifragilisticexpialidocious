@@ -270,12 +270,68 @@ def display_home(chapter_names):
     with col2:
         st.markdown(" ## Chapter 6: Goodbye Malik")
         
-        st.markdown("🛠️ Working on it...")
+        st.markdown("""Jab niyat saaf ho, toh har chaal ek teer ki tarah nishane par lagti hai. Main Malik aur Wahid ko hatane ka plan bana raha tha. Lekin har mastermind plan ke pehle ek question aata hai ...""")
 
 
     with col3:
         st.markdown(
             '<a href="?chapter=6#top" target="_self" '
+            'style="display:inline-block;padding:10px 14px;border-radius:8px;'
+            'border:2px solid #e7b66c;color:oldlace;background:#0D0B1A;'
+            'text-decoration:none;">Read More ▶</a>',
+            unsafe_allow_html=True
+        )
+
+
+    # Chapter 7 (manual)
+    # ---------------------------
+    col1, col2, col3 = st.columns([1, 3, 1])
+
+    with col1:
+        img_path = "attached_assets/generated_images/chap7main.jpg"
+        if os.path.exists(img_path):
+            st.image(img_path, use_container_width=True)
+        else:
+            st.markdown("🛠️ Working on it...")
+
+    with col2:
+        st.markdown(" ## Chapter 7: The Spark Against Wahid")
+        
+        st.markdown("🛠️ Working on it...")
+
+
+
+    with col3:
+        st.markdown(
+            '<a href="?chapter=7#top" target="_self" '
+            'style="display:inline-block;padding:10px 14px;border-radius:8px;'
+            'border:2px solid #e7b66c;color:oldlace;background:#0D0B1A;'
+            'text-decoration:none;">Read More ▶</a>',
+            unsafe_allow_html=True
+        )
+
+
+    # Chapter 8 (manual)
+    # ---------------------------
+    col1, col2, col3 = st.columns([1, 3, 1])
+
+    with col1:
+        img_path = "attached_assets/generated_images/chap8main.jpg"
+        if os.path.exists(img_path):
+            st.image(img_path, use_container_width=True)
+        else:
+            st.markdown("🛠️ Working on it...")
+
+    with col2:
+        st.markdown(" ## Chapter 8: The Spark Against Karishma")
+        
+        st.markdown("🛠️ Working on it...")
+
+
+
+    with col3:
+        st.markdown(
+            '<a href="?chapter=8#top" target="_self" '
             'style="display:inline-block;padding:10px 14px;border-radius:8px;'
             'border:2px solid #e7b66c;color:oldlace;background:#0D0B1A;'
             'text-decoration:none;">Read More ▶</a>',
@@ -436,16 +492,14 @@ def main():
         4: "When Destiny Chose Four Souls to Meet",
         5: "When Realization Demands Resolution",
         6: "Goodbye Malik",
-        7: "The Emotional Trap",
-        8: "The Spark Against Wahid",
-        9: "The Spark Against Karishma",
-        10: "The Puppeteer's Confession"
+        7: "The Spark Against Wahid",
+        8: "The Spark Against Karishma",
     }
 
     # -----------------------
     # Sidebar chapter links (real navigation)
     # -----------------------
-    for i in range(1, 11):
+    for i in range(1, 9):
         active = (i == st.session_state.selected_chapter)
         target = "_self"  # change to "_blank" if you want new tab
         base = "display:block;width:100%;padding:10px 12px;border-radius:10px;text-decoration:none;margin-bottom:8px;"
@@ -544,7 +598,7 @@ def main():
                     unsafe_allow_html=True
                 )
         with right:
-            if chapter_num < 10:
+            if chapter_num < 8:
                 st.markdown(
                     f'<a href="?chapter={chapter_num+1}#top" target="_self" '
                     'style="display:inline-block;padding:10px 14px;border-radius:8px;float:right;'

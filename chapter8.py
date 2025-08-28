@@ -52,7 +52,7 @@ def display_content():
     )
 
     text0 = """
-    <h2>Chapter 8: The Emotional Trap</h2>
+    <h2>Chapter 8: The Spark Against Karishma</h2>
 
     <p>A new chapter will come out every Wednesday......</p>
 
