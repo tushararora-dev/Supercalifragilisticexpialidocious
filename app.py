@@ -346,7 +346,7 @@ def display_home(chapter_names):
 
 def main():
     # Page configuration
-    st.set_page_config(page_title="Supercalifragilisticexpialidocious", page_icon="💀", layout="wide")
+    st.set_page_config(page_title="Supercalifragilisticexpialidocious", page_icon="💀")
 
 
 
