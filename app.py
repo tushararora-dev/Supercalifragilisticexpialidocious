@@ -4,6 +4,7 @@ import importlib.util
 import os
 from pathlib import Path
 import base64
+import streamlit.components.v1 as components
 # Clear all cached data
 st.cache_data.clear()
 import math
@@ -297,7 +298,7 @@ def display_home(chapter_names):
     with col2:
         st.markdown(" ## Chapter 7: The Spark Against Wahid")
         
-        st.markdown("🛠️ Working on it...")
+        st.markdown("Kuch battles me tum haarte nahi, tum bas gayab ho jaate ho. Malik… gayab ho gaya. Kabhi kabhi zindagi me jeet ka matlab kisi ko haarana nahi, balki unke dil me ek aisa aaina rakh dena hota hai ...")
 
 
 
@@ -346,30 +347,6 @@ def display_home(chapter_names):
 def main():
     # Page configuration
     st.set_page_config(page_title="Supercalifragilisticexpialidocious", page_icon="💀", layout="wide")
-
-    force_desktop_mobile = """
-    <head>
-    <meta name="viewport" content="width=1280, initial-scale=0.4, maximum-scale=0.4">
-    <style>
-    @media (max-width: 768px) {
-        html, body, [data-testid="stAppViewContainer"] {
-            min-width: 1280px !important;
-            overflow-x: auto !important;
-        }
-        /* Close sidebar by default on mobile */
-        [data-testid="stSidebar"] {
-            transform: translateX(-100%);
-            transition: transform 0.3s ease;
-        }
-        /* Ensure toggle button still works */
-        button[title="Menu"] {
-            z-index: 9999 !important;
-        }
-    }
-    </style>
-    </head>
-    """
-    st.markdown(force_desktop_mobile, unsafe_allow_html=True)
 
 
 
@@ -601,7 +578,7 @@ def main():
             if chapter_num < 8:
                 st.markdown(
                     f'<a href="?chapter={chapter_num+1}#top" target="_self" '
-                    'style="display:inline-block;padding:10px 14px;border-radius:8px;float:right;'
+                    'style="display:inline-block;padding:10px 14px;border-radius:8px;'
                     'border:2px solid #e7b66c;color:oldlace;background:#0D0B1A;'
                     'text-decoration:none;">Next Chapter ▶</a>',
                     unsafe_allow_html=True
