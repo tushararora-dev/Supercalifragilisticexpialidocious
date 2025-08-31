@@ -183,7 +183,7 @@ Jo insecurities thi, unhe main yahan disclose nahi kar sakta—confidential reas
   
 
 
-    text5 = """
+    text5 = """Main Tanjirō aur vo mere liye Nezuko (Demon Slayer).
 Main chaahta toh Karishma ke saath bonding theek kar sakta tha.
 Par maine decide kiya dheere-dheere hint se cheezon ko close karna hai. Aur fir mera bhi karma aaya.
 Main block ho gaya. <span style="color:#FF5733;">Server se kick ho gaya</span>. Har jagah se erase kar diya gaya.
