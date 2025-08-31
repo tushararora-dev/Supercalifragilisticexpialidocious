@@ -326,7 +326,7 @@ def display_home(chapter_names):
     with col2:
         st.markdown(" ## Chapter 8: The Spark Against Karishma")
         
-        st.markdown("🛠️ Working on it...")
+        st.markdown("Kehte hain: “Sach wahi hota hai jo tumhe todta hai, aur jhoot wahi hota hai jo tumhe sambhalta hai.” “Sach badalta nahi, chahe tum usse maano ya ignore karo. Sach wahi rehta hai ...")
 
 
 
