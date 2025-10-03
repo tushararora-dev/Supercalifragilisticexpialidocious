@@ -1,0 +1,15 @@
+name: Keep Streamlit Alive
+
+# Schedule the workflow to run every 10 minutes
+on:
+  schedule:
+    - cron: "*/10 * * * *"   # every 10 minutes
+  workflow_dispatch:         # allows manual trigger
+
+jobs:
+  ping-app:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Streamlit app
+        run: |
+          curl -s https://supercalifragilisticexpialidocious-vxfz.onrender.com/ > /dev/null
