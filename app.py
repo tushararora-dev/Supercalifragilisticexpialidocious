@@ -648,7 +648,7 @@ def main():
     }
     .scroll-buttons {
         position: fixed;
-        bottom: 20px;
+        bottom: 60px;
         right: 20px;
         display: flex;
         flex-direction: column;
